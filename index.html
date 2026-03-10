@@ -20,7 +20,7 @@ font-family:'Montserrat',sans-serif;
 background-image:url("https://www.transparenttextures.com/patterns/marble.png");
 background-color:#f5f5f5;
 background-size:cover;
-color:#1e113b;
+color:#1c5725;
 text-align:center;
 }
 
@@ -60,7 +60,7 @@ background:#f7f7f7;
 .title{
 font-family:'Great Vibes',cursive;
 font-size:42px;
-color:#2f5e3c;
+color:#1e113b;
 margin-bottom:20px;
 }
 
@@ -78,7 +78,25 @@ color:#2f5e3c;
 margin-bottom:20px;
 }
 
-.calendar{
+
+ 
+ .wedding-day::after{
+content:"❤";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+font-size:42px;
+color:#2f5e3c;
+z-index:-1;
+}
+ 
+.wedding-day{
+position:relative;
+font-weight:bold;
+}
+ 
+ .calendar{
 display:grid;
 grid-template-columns:repeat(7,1fr);
 gap:10px;
@@ -92,21 +110,7 @@ font-size:24px;
 padding:8px;
 }
 
-.wedding-day{
-position:relative;
-font-weight:bold;
-}
 
-.wedding-day::after{
-content:"❤";
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-font-size:42px;
-color:#2f5e3c;
-z-index:-1;
-}
 
 @keyframes pulse{
 0%{transform:scale(1)}
