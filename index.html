@@ -220,6 +220,25 @@ transform:scale(1.05);
 box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
+button{
+padding:12px 25px;
+margin:5px;
+border:none;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+}
+
+button[value="Қатысамын"]{
+background:#2f5e3c;
+color:white;
+}
+
+button[value="Келмеймін"]{
+background:#999;
+color:white;
+}
+
 /* ===== MAP ===== */
 .map{
 margin-top:25px;
@@ -421,15 +440,24 @@ target="_blank">
 <div class="section">
 <div class="card">
 <h2>Қатысуыңызды растаңыз</h2>
-<p>Атыңызды жазыңыз:</p>
 
-<form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" target="hidden_iframe">
-<input type="text" name="entry.YOUR_ENTRY_ID" placeholder="Сіздің атыңыз" required>
-<br>
-<button type="submit">Қатысамын</button>
+<form action="https://docs.google.com/spreadsheets/d/1i3UHegHsAU3D1LvZf57cujQOyCl7wQFHGuWZb9QjHiE/edit?usp=sharing" method="POST" target="hidden_iframe">
+
+<input type="text" name="entry.123456789" placeholder="Атыңыз" required>
+
+<br><br>
+
+<button type="submit" name="entry.987654321" value="Қатысамын">
+Қатысамын
+</button>
+
+<button type="submit" name="entry.987654321" value="Келмеймін">
+Келмеймін
+</button>
+
 </form>
 
-<iframe name="hidden_iframe" style="display:none"></iframe>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </div>
 </div>
