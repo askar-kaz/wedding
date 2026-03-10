@@ -17,10 +17,11 @@ padding:0;
 
 body{
 font-family:'Montserrat',sans-serif;
-background:#000;
-color:#333;
-line-height:1.6;
-overflow-x:hidden;
+background-image:url("https://www.transparenttextures.com/patterns/marble.png");
+background-color:#f5f5f5;
+background-size:cover;
+color:#2f5e3c;
+text-align:center;
 }
 
 h1,h2{
@@ -132,7 +133,7 @@ content:"";
 position:absolute;
 inset:0;
 background:url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat;
-filter:brightness(0.55);
+filter:brightness(0.85) contrast(1.05);
 z-index:-1;
 animation:zoom 25s ease-in-out infinite alternate;
 }
@@ -147,12 +148,14 @@ font-size:clamp(40px,6vw,70px);
 letter-spacing:3px;
 margin-bottom:10px;
 animation:fadeUp 1.5s ease;
+color:#2f5e3c;
 }
 
 .date{
 font-size:clamp(18px,3vw,28px);
 opacity:.9;
 animation:fadeUp 2s ease;
+color:#2f5e3c;
 }
 
 /* ===== SECTIONS ===== */
@@ -163,12 +166,12 @@ justify-content:center;
 }
 
 .card{
-background:white;
+background:rgba(255,255,255,0.9);
 max-width:850px;
-width:100%;
 padding:50px 30px;
 border-radius:18px;
-box-shadow:0 15px 50px rgba(0,0,0,.12);
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+margin:auto;
 animation:fadeUp 1s ease;
 }
 
