@@ -260,17 +260,26 @@ width:100%;
 height:420px;
 }
 
-/* ===== MUSIC ===== */
-.music{
-position:fixed;
-right:18px;
-bottom:18px;
-background:white;
-padding:8px 12px;
-border-radius:20px;
-box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, #ff7eb9, #ff758c);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
 /* ===== FOOTER ===== */
 footer{
 text-align:center;
@@ -279,6 +288,21 @@ color:#aaa;
 font-size:14px;
 }
 
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+let isPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+  if(!isPlaying) {
+    bgMusic.play();
+    musicBtn.textContent = '🔊 Музыка включена';
+    isPlaying = true;
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = '🎵 Включить музыку';
+    isPlaying = false;
+  }
+});
 /* ===== ANIMATION ===== */
 @keyframes fadeUp{
 from{
@@ -493,10 +517,12 @@ document.getElementById("guestName").value="";
 Біз сіздерді қуанышпен күтеміз ❤️
 </footer>
 
-<div class="music">
-<audio controls autoplay loop>
+<!-- Кнопка -->
+<button id="musicBtn" class="music-btn">🎵 Включить музыку</button>
+
+<!-- Фоновая музыка -->
+<audio id="bgMusic" loop>
 <source src="zharzhar.mp3" type="audio/mpeg">
-</audio>
 </div>
 
 <script>
