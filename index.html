@@ -82,10 +82,14 @@ margin-bottom:20px;
  
  .wedding-day::after{
 content:"❤";
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:50px;
+  height:45px;
+  transform:translate(-50%,-50%);
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 29'><path fill='none' stroke='%232f5e3c' stroke-width='2' d='M23.6,0c-3.4,0-6.4,2-7.6,5C14.8,2,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4C0,16.3,16,29,16,29s16-12.7,16-20.6C32,3.8,28.2,0,23.6,0z'/></svg>");
+  pointer-events:none;
 font-size:42px;
 color:#2f5e3c;
 z-index:1;
