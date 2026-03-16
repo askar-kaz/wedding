@@ -37,12 +37,14 @@ font-style: normal;
 html{
    margin: 0;
     padding: 0;
-    overflow: hidden; /* убираем стандартный скролл */
+   height: 100%;
+ scroll-behavior: smooth; /* плавная прокрутка */
 }
 body{
 margin: 0;
 padding: 0;
-overflow: hidden; /* убираем стандартный скролл */
+overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* включаем snap по вертикали */
 font-family:'Rosa',Regular;
 background-image:url("123.jpg");
 background-color:#f5f5f5;
@@ -53,14 +55,14 @@ text-align:center;
 
 .section {
     height: 100vh; /* каждый блок занимает весь экран */
- padding:80px 20px;
     width: 100%;
+   scroll-snap-align: start; /* позиционирование при скролле */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3em;
+   flex-direction: column;
     color: white;
-    scroll-snap-align: start; /* для плавной фиксации в будущем */
   }
 
   #section1 { background: #ff6b6b; }
@@ -384,47 +386,9 @@ height:320px;
 <div class="section" id="section1"></div>
 <div class="section" id="section2"></div>
 <div class="section" id="section3"></div>
- <div class="section" id="section4"></div>
+<div class="section" id="section4"></div>
 
-<script>
-let current = 0;
-const sections = document.querySelectorAll('.section');
 
-function scrollToSection(index) {
-  if(index < 0) index = 0;
-  if(index >= sections.length) index = sections.length - 1;
-  current = index;
-  sections[index].scrollIntoView({ behavior: 'smooth' });
-}
-
-// Скролл колесом мыши
-window.addEventListener('wheel', e => {
-  if(e.deltaY > 0){
-    scrollToSection(current + 1);
-  } else {
-    scrollToSection(current - 1);
-  }
-});
-
-// Свайп для мобильных
-let startY = 0;
-
-window.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-}, { passive: true });
-
-window.addEventListener('touchend', e => {
-  let endY = e.changedTouches[0].clientY;
-  let diff = startY - endY;
-  if(Math.abs(diff) > 50){ // минимальный порог свайпа
-    if(diff > 0){
-      scrollToSection(current + 1); // свайп вверх
-    } else {
-      scrollToSection(current - 1); // свайп вниз
-    }
-  }
-}, { passive: true });
-</script>
  
 <div class="hero">
 <div class="names">Али & Дамира</div>
