@@ -38,13 +38,14 @@ html{
    margin: 0;
     padding: 0;
    height: 100%;
- scroll-behavior: smooth; /* плавная прокрутка */
+  overflow: hidden; /* отключаем стандартный скролл */
+  scroll-behavior: smooth;
 }
 body{
 margin: 0;
 padding: 0;
-overflow-y: scroll;
-  scroll-snap-type: y mandatory; /* включаем snap по вертикали */
+  overflow: hidden; /* отключаем стандартный скролл */
+  scroll-behavior: smooth;
 font-family:'Rosa',Regular;
 background-image:url("123.jpg");
 background-color:#f5f5f5;
@@ -56,7 +57,6 @@ text-align:center;
 .section {
     height: 100vh; /* каждый блок занимает весь экран */
     width: 100%;
-   scroll-snap-align: start; /* позиционирование при скролле */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,10 +65,7 @@ text-align:center;
     color: white;
   }
 
-  #section1 { background: #ff6b6b; }
-  #section2 { background: #6b9eff; }
-  #section3 { background: #6bff9e; }
- 
+
 h1,h2{
 font-family:'miama',Regular;
 }
@@ -382,13 +379,47 @@ height:320px;
 </style>
 </head>
 
+<script>
+let current = 0;
+let isScrolling = false; // чтобы избежать множественных срабатываний
+const sections = document.querySelectorAll('.section');
+
+function scrollToSection(index) {
+  if(index < 0) index = 0;
+  if(index >= sections.length) index = sections.length - 1;
+  current = index;
+  isScrolling = true;
+  sections[index].scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => { isScrolling = false; }, 700); // время на завершение анимации
+}
+
+// ПК: колесо мыши
+window.addEventListener('wheel', e => {
+  if(isScrolling) return;
+  if(e.deltaY > 0) scrollToSection(current + 1);
+  else scrollToSection(current - 1);
+});
+
+// Мобильные: свайп
+let startY = 0;
+window.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+window.addEventListener('touchend', e => {
+  if(isScrolling) return;
+  let endY = e.changedTouches[0].clientY;
+  let diff = startY - endY;
+  if(Math.abs(diff) > 50){
+    if(diff > 0) scrollToSection(current + 1); // свайп вверх
+    else scrollToSection(current - 1); // свайп вниз
+  }
+}, { passive: true });
+</script>
+ 
 <body>
-<div class="section" id="section1"></div>
-<div class="section" id="section2"></div>
-<div class="section" id="section3"></div>
-<div class="section" id="section4"></div>
-
-
+  <div class="section" style="background: url('images/wed1.png') center/cover no-repeat;">Блок 1</div>
+  <div class="section" style="background: url('images/wed2.png') center/cover no-repeat;">Блок 2</div>
+  <div class="section" style="background: url('images/wed3.png') center/cover no-repeat;">Блок 3</div>
+ <div class="section" style="background: url('images/wed3.png') center/cover no-repeat;">Блок 3</div>
+ <div class="section" style="background: url('images/wed3.png') center/cover no-repeat;">Блок 3</div>
  
 <div class="hero">
 <div class="names">Али & Дамира</div>
