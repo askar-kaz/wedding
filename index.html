@@ -7,9 +7,22 @@
 <meta property="og:url" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop"> 
 <title>Біздің үйлену тойымыз</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
 
+document.querySelectorAll(".fade-up").forEach(el => {
+  observer.observe(el);
+});
+</script>
 /* ===== RESET ===== */
 *{
 box-sizing:border-box;
