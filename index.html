@@ -38,14 +38,13 @@ html{
    margin: 0;
     padding: 0;
    height: 100%;
-  overflow: hidden; /* отключаем стандартный скролл */
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* плавная прокрутка */
 }
 body{
 margin: 0;
 padding: 0;
-  overflow: hidden; /* отключаем стандартный скролл */
-  scroll-behavior: smooth;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* включаем snap по вертикали */
 font-family:'Rosa',Regular;
 background-image:url("123.jpg");
 background-color:#f5f5f5;
