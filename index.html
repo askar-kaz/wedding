@@ -299,7 +299,7 @@ width:100%;
 height:420px;
 }
 
-
+/* ===== Music ===== */
 .music-btn {
   position: fixed;
   top: 20px;
@@ -334,11 +334,11 @@ let isPlaying = false;
 musicBtn.addEventListener('click', () => {
   if(!isPlaying) {
     bgMusic.play();
-    musicBtn.textContent = '🔊 Музыка включена';
+    musicBtn.textContent = '🔊 ойнау';
     isPlaying = true;
   } else {
     bgMusic.pause();
-    musicBtn.textContent = '🎵 Включить музыку';
+    musicBtn.textContent = '🎵 Әуенді ойнату';
     isPlaying = false;
   }
 });
@@ -378,41 +378,6 @@ height:320px;
 
 </style>
 </head>
-
-<script>
-let current = 0;
-let isScrolling = false; // чтобы избежать множественных срабатываний
-const sections = document.querySelectorAll('.section');
-
-function scrollToSection(index) {
-  if(index < 0) index = 0;
-  if(index >= sections.length) index = sections.length - 1;
-  current = index;
-  isScrolling = true;
-  sections[index].scrollIntoView({ behavior: 'smooth' });
-  setTimeout(() => { isScrolling = false; }, 700); // время на завершение анимации
-}
-
-// ПК: колесо мыши
-window.addEventListener('wheel', e => {
-  if(isScrolling) return;
-  if(e.deltaY > 0) scrollToSection(current + 1);
-  else scrollToSection(current - 1);
-});
-
-// Мобильные: свайп
-let startY = 0;
-window.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
-window.addEventListener('touchend', e => {
-  if(isScrolling) return;
-  let endY = e.changedTouches[0].clientY;
-  let diff = startY - endY;
-  if(Math.abs(diff) > 50){
-    if(diff > 0) scrollToSection(current + 1); // свайп вверх
-    else scrollToSection(current - 1); // свайп вниз
-  }
-}, { passive: true });
-</script>
  
 <body>
 
@@ -570,8 +535,8 @@ let formURL = "https://docs.google.com/forms/d/e/1FAIpQLSc9So8lZ9fsBkVaW4a-_VBEw
 
 let data = new FormData();
 
-data.append("entry.", name);
-data.append("entry.1959564036_sentinel", answer);
+data.append("entry.1610969562", name);
+data.append("entry.1959564036", answer);
 
 fetch(formURL,{
 method:"POST",
